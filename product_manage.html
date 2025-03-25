@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-4 flex items-center">
+        <button onclick="window.location.href='home.html'" class="mr-4 hover:text-blue-500 transition-colors">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-lg font-semibold">商品管理</h1>
+    </div>
+
+    <!-- 统计信息 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+                <div class="text-xl font-semibold">128</div>
+                <div class="text-sm text-gray-500">在售商品</div>
+            </div>
+            <div>
+                <div class="text-xl font-semibold">12</div>
+                <div class="text-sm text-gray-500">待审核</div>
+            </div>
+            <div>
+                <div class="text-xl font-semibold">3</div>
+                <div class="text-sm text-gray-500">已下架</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 操作按钮 -->
+    <div class="bg-white mt-2 p-4">
+        <button onclick="window.location.href='product_add.html'" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold mb-4">
+            <i class="fas fa-plus mr-2"></i>上架新商品
+        </button>
+        <div class="grid grid-cols-3 gap-4">
+            <button class="px-4 py-2 border rounded-lg text-sm">批量导入</button>
+            <button class="px-4 py-2 border rounded-lg text-sm">批量导出</button>
+            <button class="px-4 py-2 border rounded-lg text-sm">库存管理</button>
+        </div>
+    </div>
+
+    <!-- 商品列表 -->
+    <div class="bg-white mt-2">
+        <div class="p-4 border-b">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-semibold">商品列表</h2>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 bg-gray-100 rounded-full text-sm">全部</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full text-sm">在售</button>
+                    <button class="px-3 py-1 bg-gray-100 rounded-full text-sm">待审</button>
+                </div>
+            </div>
+            <!-- 商品项 -->
+            <div class="space-y-4">
+                <div class="flex border rounded-lg p-3">
+                    <img src="https://via.placeholder.com/100" alt="商品图片" class="w-24 h-24 rounded-lg object-cover">
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between">
+                            <h3 class="font-semibold">高级建材套装A</h3>
+                            <span class="text-green-500">在售</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mt-1">商品编号：SP12345678</div>
+                        <div class="text-red-500 mt-2">¥2,399.00</div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-sm text-gray-500">库存：892</div>
+                            <div class="space-x-2">
+                                <button class="px-3 py-1 border rounded text-sm">编辑</button>
+                                <button class="px-3 py-1 border rounded text-sm text-red-500">下架</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex border rounded-lg p-3">
+                    <img src="https://via.placeholder.com/100" alt="商品图片" class="w-24 h-24 rounded-lg object-cover">
+                    <div class="ml-3 flex-1">
+                        <div class="flex justify-between">
+                            <h3 class="font-semibold">环保涂料系列B</h3>
+                            <span class="text-yellow-500">待审核</span>
+                        </div>
+                        <div class="text-sm text-gray-500 mt-1">商品编号：SP12345679</div>
+                        <div class="text-red-500 mt-2">¥1,299.00</div>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-sm text-gray-500">库存：500</div>
+                            <div class="space-x-2">
+                                <button class="px-3 py-1 border rounded text-sm">编辑</button>
+                                <button class="px-3 py-1 border rounded text-sm text-gray-500">撤回</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增商品表单（默认隐藏） -->
+    <div id="addProductForm" class="fixed inset-0 bg-black bg-opacity-50 hidden" style="z-index: 1000;">
+        <div class="bg-white rounded-lg max-w-md mx-auto mt-20 p-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold">新增商品</h3>
+                <button onclick="hideAddProductForm()" class="text-gray-500">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">商品名称</label>
+                    <input type="text" class="w-full border rounded-lg px-3 py-2" placeholder="请输入商品名称">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">商品分类</label>
+                    <select class="w-full border rounded-lg px-3 py-2">
+                        <option>建材</option>
+                        <option>涂料</option>
+                        <option>工具</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">商品价格</label>
+                    <input type="number" class="w-full border rounded-lg px-3 py-2" placeholder="请输入商品价格">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">库存数量</label>
+                    <input type="number" class="w-full border rounded-lg px-3 py-2" placeholder="请输入库存数量">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">商品图片</label>
+                    <div class="border-2 border-dashed rounded-lg p-4 text-center">
+                        <i class="fas fa-cloud-upload-alt text-gray-400 text-3xl"></i>
+                        <p class="text-sm text-gray-500 mt-2">点击或拖拽上传图片</p>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">商品描述</label>
+                    <textarea class="w-full border rounded-lg px-3 py-2" rows="4" placeholder="请输入商品描述"></textarea>
+                </div>
+                <div class="flex space-x-4">
+                    <button type="button" onclick="hideAddProductForm()" class="flex-1 px-4 py-2 border rounded-lg">取消</button>
+                    <button type="submit" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg">确认添加</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showAddProductForm() {
+            document.getElementById('addProductForm').classList.remove('hidden');
+        }
+
+        function hideAddProductForm() {
+            document.getElementById('addProductForm').classList.add('hidden');
+        }
+    </script>
+</body>
+</html> 

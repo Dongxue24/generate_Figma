@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商家管理系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --device-width: 390px;
+            --device-height: 844px;
+        }
+        
+        body {
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .device-frame {
+            width: var(--device-width);
+            height: var(--device-height);
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .status-bar {
+            height: 44px;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            position: fixed;
+            top: 0;
+            width: var(--device-width);
+            z-index: 1000;
+        }
+        
+        .bottom-tab-bar {
+            height: 83px;
+            background-color: #fff;
+            border-top: 1px solid #e5e5e5;
+            position: fixed;
+            bottom: 0;
+            width: var(--device-width);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        
+        .content-container {
+            margin-top: 44px;
+            margin-bottom: 83px;
+            height: calc(100% - 127px);
+            overflow-y: auto;
+        }
+        
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .tab-item.active {
+            color: #007AFF;
+        }
+        
+        .tab-item i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="device-frame">
+        <div class="status-bar">
+            <div class="time">9:41</div>
+            <div class="icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi ml-2"></i>
+                <i class="fas fa-battery-full ml-2"></i>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <iframe id="mainContent" src="home.html" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+        </div>
+        
+        <div class="bottom-tab-bar">
+            <div class="tab-item active" onclick="switchTab('home')">
+                <i class="fas fa-home"></i>
+                <span>首页</span>
+            </div>
+            <div class="tab-item" onclick="switchTab('message')">
+                <i class="fas fa-comment"></i>
+                <span>消息</span>
+            </div>
+            <div class="tab-item" onclick="switchTab('ai')">
+                <i class="fas fa-robot"></i>
+                <span>AI员工</span>
+            </div>
+            <div class="tab-item" onclick="switchTab('video')">
+                <i class="fas fa-play"></i>
+                <span>视频</span>
+            </div>
+            <div class="tab-item" onclick="switchTab('profile')">
+                <i class="fas fa-user"></i>
+                <span>我的</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-item').forEach(item => item.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            
+            const iframe = document.getElementById('mainContent');
+            switch(tab) {
+                case 'home':
+                    iframe.src = 'home.html';
+                    break;
+                case 'message':
+                    iframe.src = 'message.html';
+                    break;
+                case 'ai':
+                    iframe.src = 'ai_assistant.html';
+                    break;
+                case 'video':
+                    iframe.src = 'video.html';
+                    break;
+                case 'profile':
+                    iframe.src = 'profile.html';
+                    break;
+            }
+        }
+    </script>
+</body>
+</html> 

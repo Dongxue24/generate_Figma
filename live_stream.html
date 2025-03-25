@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>直播中心</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#60A5FA',
+                        accent: '#0891B2',
+                        background: '#EFF6FF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen max-w-[430px] mx-auto">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-3 flex items-center justify-between shadow-sm border-b border-blue-100 sticky top-0 z-10">
+        <div class="flex items-center">
+            <button onclick="window.location.href='home.html'" class="mr-3">
+                <i class="fas fa-arrow-left text-gray-600"></i>
+            </button>
+            <h1 class="text-base font-semibold">直播中心</h1>
+        </div>
+        <button class="text-xs bg-primary text-white px-3 py-1 rounded-full">
+            创建直播
+        </button>
+    </div>
+
+    <!-- 数据概览 -->
+    <div class="bg-gradient-to-r from-blue-500 to-violet-500 p-4">
+        <div class="grid grid-cols-3 gap-2 text-center text-white">
+            <div class="bg-white/20 rounded-lg p-2">
+                <div class="text-lg font-semibold">12</div>
+                <div class="text-xs opacity-90">今日直播场次</div>
+            </div>
+            <div class="bg-white/20 rounded-lg p-2">
+                <div class="text-lg font-semibold">2,358</div>
+                <div class="text-xs opacity-90">观看人数</div>
+            </div>
+            <div class="bg-white/20 rounded-lg p-2">
+                <div class="text-lg font-semibold">¥12,345</div>
+                <div class="text-xs opacity-90">销售额</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 快捷操作 -->
+    <div class="bg-white p-4">
+        <div class="grid grid-cols-2 gap-3">
+            <button class="flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-500 to-violet-500 text-white p-3 rounded-xl">
+                <i class="fas fa-video"></i>
+                <span>开始直播</span>
+            </button>
+            <button class="flex items-center justify-center space-x-2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white p-3 rounded-xl">
+                <i class="fas fa-film"></i>
+                <span>录制短视频</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 平台选择 -->
+    <div class="bg-white mt-2 p-4">
+        <h2 class="text-base font-medium mb-3">选择直播平台</h2>
+        <div class="space-y-3">
+            <div class="flex items-center justify-between p-3 border rounded-lg">
+                <div class="flex items-center">
+                    <img src="https://via.placeholder.com/32" alt="抖音" class="w-8 h-8 rounded-lg">
+                    <div class="ml-3">
+                        <div class="text-sm font-medium">抖音直播</div>
+                        <div class="text-xs text-gray-500">粉丝数：3.2w</div>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-500"></div>
+                </label>
+            </div>
+            <div class="flex items-center justify-between p-3 border rounded-lg">
+                <div class="flex items-center">
+                    <img src="https://via.placeholder.com/32" alt="快手" class="w-8 h-8 rounded-lg">
+                    <div class="ml-3">
+                        <div class="text-sm font-medium">快手直播</div>
+                        <div class="text-xs text-gray-500">粉丝数：2.8w</div>
+                    </div>
+                </div>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" class="sr-only peer" checked>
+                    <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-500"></div>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 直播预约 -->
+    <div class="bg-white mt-2 p-4">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-base font-medium">直播预约</h2>
+            <button class="text-xs text-primary">查看更多</button>
+        </div>
+        <div class="space-y-3">
+            <div class="p-3 border rounded-lg">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-sm font-medium">新品发布会</div>
+                    <div class="text-xs text-blue-500">未开始</div>
+                </div>
+                <div class="flex items-center text-xs text-gray-500 space-x-2">
+                    <i class="fas fa-clock"></i>
+                    <span>2024-03-20 14:00</span>
+                    <span class="mx-1">|</span>
+                    <i class="fas fa-user-group"></i>
+                    <span>预约：326</span>
+                </div>
+            </div>
+            <div class="p-3 border rounded-lg">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-sm font-medium">工程案例分享</div>
+                    <div class="text-xs text-orange-500">预告中</div>
+                </div>
+                <div class="flex items-center text-xs text-gray-500 space-x-2">
+                    <i class="fas fa-clock"></i>
+                    <span>2024-03-22 15:00</span>
+                    <span class="mx-1">|</span>
+                    <i class="fas fa-user-group"></i>
+                    <span>预约：128</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 历史直播 -->
+    <div class="bg-white mt-2 p-4 mb-4">
+        <div class="flex items-center justify-between mb-3">
+            <h2 class="text-base font-medium">历史直播</h2>
+            <button class="text-xs text-primary">查看更多</button>
+        </div>
+        <div class="space-y-3">
+            <div class="p-3 border rounded-lg">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-sm font-medium">春季新品推介会</div>
+                    <div class="text-xs text-gray-500">已结束</div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center text-xs text-gray-500 space-x-2">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024-03-15</span>
+                        <span class="mx-1">|</span>
+                        <i class="fas fa-eye"></i>
+                        <span>1,234</span>
+                    </div>
+                    <div class="text-xs text-primary">查看回放</div>
+                </div>
+            </div>
+            <div class="p-3 border rounded-lg">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-sm font-medium">工程渠道说明会</div>
+                    <div class="text-xs text-gray-500">已结束</div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center text-xs text-gray-500 space-x-2">
+                        <i class="fas fa-calendar"></i>
+                        <span>2024-03-10</span>
+                        <span class="mx-1">|</span>
+                        <i class="fas fa-eye"></i>
+                        <span>2,156</span>
+                    </div>
+                    <div class="text-xs text-primary">查看回放</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around items-center py-2 px-4 max-w-[430px] mx-auto">
+        <button class="flex flex-col items-center">
+            <i class="fas fa-home text-gray-400"></i>
+            <span class="text-xs text-gray-400 mt-1">首页</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="fas fa-video text-primary"></i>
+            <span class="text-xs text-primary mt-1">直播</span>
+        </button>
+        <button class="flex flex-col items-center">
+            <i class="fas fa-user text-gray-400"></i>
+            <span class="text-xs text-gray-400 mt-1">我的</span>
+        </button>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物流下单</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#60A5FA',
+                        accent: '#0891B2',
+                        background: '#EFF6FF'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background pb-20 min-h-screen max-w-[430px] mx-auto">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-3 flex items-center shadow-sm border border-blue-100">
+        <button onclick="window.location.href='order_manage.html'" class="mr-3 hover:text-primary transition-colors">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-base font-semibold text-primary">物流下单</h1>
+    </div>
+
+    <!-- 发货信息 -->
+    <div class="bg-white mt-2 p-3 border border-blue-100">
+        <h2 class="text-sm font-semibold mb-3 text-primary">发货信息</h2>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">发货人</label>
+                <input type="text" value="王小健" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">联系电话</label>
+                <input type="tel" value="13800138000" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">发货地址</label>
+                <div class="flex space-x-2 mb-2">
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>北京市</option>
+                    </select>
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>海淀区</option>
+                    </select>
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>中关村街道</option>
+                    </select>
+                </div>
+                <input type="text" value="科技园区23号楼4层" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- 收货信息 -->
+    <div class="bg-white mt-2 p-3 border border-blue-100">
+        <h2 class="text-sm font-semibold mb-3 text-primary">收货信息</h2>
+        <div class="space-y-3">
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">收货人</label>
+                <input type="text" value="张先生" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">联系电话</label>
+                <input type="tel" value="13888888888" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+            <div>
+                <label class="block text-xs text-gray-600 mb-1">收货地址</label>
+                <div class="flex space-x-2 mb-2">
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>上海市</option>
+                    </select>
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>浦东新区</option>
+                    </select>
+                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>张江街道</option>
+                    </select>
+                </div>
+                <input type="text" value="科技广场12号楼" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+            </div>
+        </div>
+    </div>
+
+    <!-- 物品信息 -->
+    <div class="bg-white mt-2 p-4 border border-blue-100">
+        <h2 class="text-base font-semibold mb-4 text-primary">物品信息</h2>
+        <div class="border border-blue-50 rounded-lg p-3">
+            <div class="flex mb-3">
+                <img src="https://via.placeholder.com/80" alt="商品图片" class="w-20 h-20 rounded-lg object-cover">
+                <div class="ml-3">
+                    <div class="font-medium text-gray-800">高级建材套装A</div>
+                    <div class="text-sm text-gray-500 mt-1">规格：500ml/箱</div>
+                    <div class="text-sm text-gray-500">数量：2</div>
+                </div>
+            </div>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">包装方式</label>
+                    <select class="w-full border rounded-lg px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <option>纸箱</option>
+                        <option>木箱</option>
+                        <option>塑料箱</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-600 mb-1">物品重量</label>
+                    <div class="relative">
+                        <input type="number" value="5.5" class="w-full border rounded-lg px-3 py-2 pr-12 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
+                        <span class="absolute right-3 top-2 text-gray-500">kg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 物流选择 -->
+    <div class="bg-white mt-2 p-4 border border-blue-100">
+        <h2 class="text-base font-semibold mb-4 text-primary">物流选择</h2>
+        <div class="space-y-3">
+            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
+                <input type="radio" name="logistics" id="sf" checked class="mr-3 text-primary">
+                <img src="https://via.placeholder.com/40" alt="顺丰" class="w-10 h-10 mr-3">
+                <div class="flex-1">
+                    <label for="sf" class="font-medium text-gray-800">顺丰速运</label>
+                    <div class="text-sm text-gray-500">预计2-3天送达</div>
+                </div>
+                <div class="text-accent font-medium">¥32.00</div>
+            </div>
+            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
+                <input type="radio" name="logistics" id="zt" class="mr-3 text-primary">
+                <img src="https://via.placeholder.com/40" alt="中通" class="w-10 h-10 mr-3">
+                <div class="flex-1">
+                    <label for="zt" class="font-medium text-gray-800">中通快递</label>
+                    <div class="text-sm text-gray-500">预计3-4天送达</div>
+                </div>
+                <div class="text-accent font-medium">¥18.00</div>
+            </div>
+            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
+                <input type="radio" name="logistics" id="yd" class="mr-3 text-primary">
+                <img src="https://via.placeholder.com/40" alt="韵达" class="w-10 h-10 mr-3">
+                <div class="flex-1">
+                    <label for="yd" class="font-medium text-gray-800">韵达快递</label>
+                    <div class="text-sm text-gray-500">预计3-4天送达</div>
+                </div>
+                <div class="text-accent font-medium">¥20.00</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部按钮 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-blue-100 p-4">
+        <div class="flex justify-between items-center mb-2">
+            <span class="text-gray-600">运费：</span>
+            <span class="text-xl font-semibold text-accent">¥32.00</span>
+        </div>
+        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors">
+            确认发货
+        </button>
+    </div>
+</body>
+</html> 

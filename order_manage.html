@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>订单管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#60A5FA',
+                        accent: '#0891B2',
+                        background: '#EFF6FF',
+                        status: {
+                            pending: '#DC2626',
+                            shipped: '#2563EB',
+                            completed: '#059669',
+                            refund: '#D97706'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background min-h-screen max-w-[430px] mx-auto">
+    <!-- 顶部导航 -->
+    <div class="bg-white p-3 flex items-center shadow-sm border border-blue-100">
+        <button onclick="window.location.href='home.html'" class="mr-3 hover:text-primary transition-colors">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1 class="text-base font-semibold text-primary">订单管理</h1>
+    </div>
+
+    <!-- 订单状态统计 -->
+    <div class="bg-white mt-2 p-3 border border-blue-100">
+        <div class="grid grid-cols-4 gap-2 text-center">
+            <div>
+                <div class="text-lg font-semibold text-status-pending">15</div>
+                <div class="text-xs text-gray-500">待发货</div>
+            </div>
+            <div>
+                <div class="text-lg font-semibold text-status-shipped">28</div>
+                <div class="text-xs text-gray-500">已发货</div>
+            </div>
+            <div>
+                <div class="text-lg font-semibold text-status-completed">156</div>
+                <div class="text-xs text-gray-500">已完成</div>
+            </div>
+            <div>
+                <div class="text-lg font-semibold text-status-refund">3</div>
+                <div class="text-xs text-gray-500">售后中</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 订单筛选 -->
+    <div class="bg-white mt-2 p-3 border border-blue-100">
+        <div class="flex space-x-2 overflow-x-auto pb-1">
+            <button class="px-3 py-1.5 bg-primary text-white rounded-full text-xs whitespace-nowrap">全部订单</button>
+            <button class="px-3 py-1.5 bg-white border border-gray-200 hover:border-primary hover:text-primary rounded-full text-xs whitespace-nowrap transition-colors">待发货</button>
+            <button class="px-3 py-1.5 bg-white border border-gray-200 hover:border-primary hover:text-primary rounded-full text-xs whitespace-nowrap transition-colors">已发货</button>
+            <button class="px-3 py-1.5 bg-white border border-gray-200 hover:border-primary hover:text-primary rounded-full text-xs whitespace-nowrap transition-colors">已完成</button>
+            <button class="px-3 py-1.5 bg-white border border-gray-200 hover:border-primary hover:text-primary rounded-full text-xs whitespace-nowrap transition-colors">售后中</button>
+        </div>
+    </div>
+
+    <!-- 订单列表 -->
+    <div class="bg-white mt-2 border border-blue-100">
+        <!-- 订单项 1 -->
+        <div class="p-4 border-b border-blue-50 hover:bg-background transition-colors">
+            <div class="flex justify-between items-center mb-2">
+                <div class="text-sm text-gray-500">订单号：2024032101</div>
+                <div class="text-status-pending font-medium">待发货</div>
+            </div>
+            <div class="flex mb-3">
+                <img src="https://via.placeholder.com/80" alt="商品图片" class="w-20 h-20 rounded-lg object-cover">
+                <div class="ml-3 flex-1">
+                    <div class="font-medium text-gray-800">高级建材套装A</div>
+                    <div class="text-sm text-gray-500 mt-1">规格：500ml/箱</div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm">数量：2</div>
+                        <div class="text-accent font-medium">¥2,399.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="text-gray-500">买家：张先生 (138****8888)</div>
+                <div class="space-x-2">
+                    <button onclick="window.location.href='logistics_order.html'" class="px-4 py-1 border border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-colors">发货</button>
+                    <button class="px-4 py-1 border border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors">详情</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单项 2 -->
+        <div class="p-4 border-b border-blue-50 hover:bg-background transition-colors">
+            <div class="flex justify-between items-center mb-2">
+                <div class="text-sm text-gray-500">订单号：2024032102</div>
+                <div class="text-status-shipped font-medium">已发货</div>
+            </div>
+            <div class="flex mb-3">
+                <img src="https://via.placeholder.com/80" alt="商品图片" class="w-20 h-20 rounded-lg object-cover">
+                <div class="ml-3 flex-1">
+                    <div class="font-medium text-gray-800">环保涂料系列B</div>
+                    <div class="text-sm text-gray-500 mt-1">规格：20L/桶</div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm">数量：1</div>
+                        <div class="text-accent font-medium">¥1,299.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="text-gray-500">买家：李先生 (159****6666)</div>
+                <div class="space-x-2">
+                    <button class="px-4 py-1 border border-status-shipped text-status-shipped hover:bg-status-shipped hover:text-white rounded-lg transition-colors">查看物流</button>
+                    <button class="px-4 py-1 border border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors">详情</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 订单项 3 -->
+        <div class="p-4 border-b border-blue-50 hover:bg-background transition-colors">
+            <div class="flex justify-between items-center mb-2">
+                <div class="text-sm text-gray-500">订单号：2024032103</div>
+                <div class="text-status-refund font-medium">售后中</div>
+            </div>
+            <div class="flex mb-3">
+                <img src="https://via.placeholder.com/80" alt="商品图片" class="w-20 h-20 rounded-lg object-cover">
+                <div class="ml-3 flex-1">
+                    <div class="font-medium text-gray-800">专业工具套装C</div>
+                    <div class="text-sm text-gray-500 mt-1">规格：标准套装</div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm">数量：1</div>
+                        <div class="text-accent font-medium">¥3,599.00</div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center text-sm">
+                <div class="text-gray-500">买家：王女士 (186****9999)</div>
+                <div class="space-x-2">
+                    <button class="px-4 py-1 border border-status-refund text-status-refund hover:bg-status-refund hover:text-white rounded-lg transition-colors">处理售后</button>
+                    <button class="px-4 py-1 border border-gray-200 hover:border-primary hover:text-primary rounded-lg transition-colors">详情</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
