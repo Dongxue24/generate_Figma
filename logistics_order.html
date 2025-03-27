@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>物流下单</title>
+    <title>物流发货</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script>
@@ -14,157 +14,403 @@
                         primary: '#1E40AF',
                         secondary: '#60A5FA',
                         accent: '#0891B2',
-                        background: '#EFF6FF'
+                        background: '#EFF6FF',
+                        status: {
+                            pending: '#DC2626',
+                            shipped: '#2563EB',
+                            completed: '#059669',
+                            refund: '#D97706'
+                        }
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-background pb-20 min-h-screen max-w-[430px] mx-auto">
+<body class="bg-background min-h-screen max-w-[430px] mx-auto">
     <!-- 顶部导航 -->
-    <div class="bg-white p-3 flex items-center shadow-sm border border-blue-100">
-        <button onclick="window.location.href='order_manage.html'" class="mr-3 hover:text-primary transition-colors">
-            <i class="fas fa-arrow-left"></i>
-        </button>
-        <h1 class="text-base font-semibold text-primary">物流下单</h1>
+    <div class="bg-white p-3 flex items-center justify-between shadow-sm sticky top-0 z-10 border-b border-blue-100">
+        <div class="flex items-center">
+            <button onclick="window.location.href='order_manage.html'" class="mr-2">
+                <i class="fas fa-arrow-left text-gray-600"></i>
+            </button>
+            <h1 class="text-base font-semibold">物流发货</h1>
+        </div>
+        <span class="text-xs text-primary">订单号: SH20240512076</span>
     </div>
 
     <!-- 发货信息 -->
-    <div class="bg-white mt-2 p-3 border border-blue-100">
-        <h2 class="text-sm font-semibold mb-3 text-primary">发货信息</h2>
-        <div class="space-y-3">
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">发货人</label>
-                <input type="text" value="王小健" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">联系电话</label>
-                <input type="tel" value="13800138000" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">发货地址</label>
-                <div class="flex space-x-2 mb-2">
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>北京市</option>
-                    </select>
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>海淀区</option>
-                    </select>
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>中关村街道</option>
-                    </select>
-                </div>
-                <input type="text" value="科技园区23号楼4层" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-        </div>
-    </div>
-
-    <!-- 收货信息 -->
-    <div class="bg-white mt-2 p-3 border border-blue-100">
-        <h2 class="text-sm font-semibold mb-3 text-primary">收货信息</h2>
-        <div class="space-y-3">
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">收货人</label>
-                <input type="text" value="张先生" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">联系电话</label>
-                <input type="tel" value="13888888888" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-            <div>
-                <label class="block text-xs text-gray-600 mb-1">收货地址</label>
-                <div class="flex space-x-2 mb-2">
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>上海市</option>
-                    </select>
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>浦东新区</option>
-                    </select>
-                    <select class="flex-1 border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>张江街道</option>
-                    </select>
-                </div>
-                <input type="text" value="科技广场12号楼" class="w-full border rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-            </div>
-        </div>
-    </div>
-
-    <!-- 物品信息 -->
-    <div class="bg-white mt-2 p-4 border border-blue-100">
-        <h2 class="text-base font-semibold mb-4 text-primary">物品信息</h2>
-        <div class="border border-blue-50 rounded-lg p-3">
-            <div class="flex mb-3">
-                <img src="https://via.placeholder.com/80" alt="商品图片" class="w-20 h-20 rounded-lg object-cover">
-                <div class="ml-3">
-                    <div class="font-medium text-gray-800">高级建材套装A</div>
-                    <div class="text-sm text-gray-500 mt-1">规格：500ml/箱</div>
-                    <div class="text-sm text-gray-500">数量：2</div>
-                </div>
-            </div>
+    <div class="p-3">
+        <div class="bg-white p-4 rounded-lg shadow-sm mb-3 border border-blue-100">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">发货信息</h2>
             <div class="space-y-3">
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1">包装方式</label>
-                    <select class="w-full border rounded-lg px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <option>纸箱</option>
-                        <option>木箱</option>
-                        <option>塑料箱</option>
-                    </select>
+                    <label class="block text-xs text-gray-500 mb-1">发货人</label>
+                    <input type="text" value="王小健" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm text-gray-600 mb-1">物品重量</label>
-                    <div class="relative">
-                        <input type="number" value="5.5" class="w-full border rounded-lg px-3 py-2 pr-12 focus:border-primary focus:ring-1 focus:ring-primary outline-none">
-                        <span class="absolute right-3 top-2 text-gray-500">kg</span>
+                    <label class="block text-xs text-gray-500 mb-1">发货人电话</label>
+                    <input type="text" value="13812345678" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">发货地址</label>
+                    <input type="text" value="北京市海淀区建材城西路12号" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-sm mb-3 border border-blue-100">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">收货信息</h2>
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">收货人</label>
+                    <input type="text" value="张工" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">收货人电话</label>
+                    <input type="text" value="13987654321" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">收货地址</label>
+                    <input type="text" value="上海市浦东新区张江高科技园区博云路2号" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow-sm mb-3 border border-blue-100">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">物品信息</h2>
+            <div class="space-y-3">
+                <div class="flex justify-between items-center bg-gray-50 p-2 rounded-lg">
+                    <div class="flex items-center">
+                        <img src="https://via.placeholder.com/50" alt="商品图片" class="w-12 h-12 mr-2 rounded">
+                        <div>
+                            <div class="text-sm font-medium">多功能瓷砖粘合剂</div>
+                            <div class="text-xs text-gray-500">规格：25kg/袋 x 10</div>
+                        </div>
+                    </div>
+                    <div class="text-sm text-primary">¥1,280.00</div>
+                </div>
+                <div>
+                    <label class="block text-xs text-gray-500 mb-1">包装件数</label>
+                    <input type="number" value="1" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">总重量 (kg)</label>
+                        <input type="number" value="250" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">总体积 (m³)</label>
+                        <input type="number" value="0.5" step="0.01" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">长 (cm)</label>
+                        <input type="number" value="100" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">宽 (cm)</label>
+                        <input type="number" value="80" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">高 (cm)</label>
+                        <input type="number" value="60" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-gray-500 mb-1">预计送达时间</label>
+                        <select class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                            <option>普通配送 (3-5天)</option>
+                            <option>加急配送 (1-2天)</option>
+                            <option>当日达 (24小时内)</option>
+                        </select>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- 物流选择 -->
-    <div class="bg-white mt-2 p-4 border border-blue-100">
-        <h2 class="text-base font-semibold mb-4 text-primary">物流选择</h2>
-        <div class="space-y-3">
-            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
-                <input type="radio" name="logistics" id="sf" checked class="mr-3 text-primary">
-                <img src="https://via.placeholder.com/40" alt="顺丰" class="w-10 h-10 mr-3">
-                <div class="flex-1">
-                    <label for="sf" class="font-medium text-gray-800">顺丰速运</label>
-                    <div class="text-sm text-gray-500">预计2-3天送达</div>
+        <!-- 物流方式选择 -->
+        <div class="bg-white p-4 rounded-lg shadow-sm mb-3 border border-blue-100">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">选择物流方式</h2>
+            
+            <!-- 自己单独发 -->
+            <div class="border border-gray-100 rounded-lg mb-3 overflow-hidden">
+                <div id="option1" class="cursor-pointer" onclick="selectShippingMethod(1)">
+                    <div class="flex justify-between items-center p-3">
+                        <div class="flex items-center">
+                            <div id="radio1" class="w-5 h-5 rounded-full border-2 border-gray-300 mr-3 flex items-center justify-center">
+                                <div id="dot1" class="w-3 h-3 bg-primary rounded-full hidden"></div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-sm">自己单独发</div>
+                                <div class="text-xs text-gray-500">信息直接发送到物流APP</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs px-2 py-1 bg-blue-50 text-primary rounded-full">
+                                ¥120-180
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-accent font-medium">¥32.00</div>
-            </div>
-            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
-                <input type="radio" name="logistics" id="zt" class="mr-3 text-primary">
-                <img src="https://via.placeholder.com/40" alt="中通" class="w-10 h-10 mr-3">
-                <div class="flex-1">
-                    <label for="zt" class="font-medium text-gray-800">中通快递</label>
-                    <div class="text-sm text-gray-500">预计3-4天送达</div>
+                <div id="details1" class="p-3 bg-blue-50 hidden">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm">
+                            <span>预计价格:</span>
+                            <span class="font-medium">¥150.00</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>物流公司:</span>
+                            <span class="font-medium">建材物流专线</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span>预计送达:</span>
+                            <span class="font-medium">3-5个工作日</span>
+                        </div>
+                        <button id="sendToApp" class="w-full bg-primary text-white py-2 rounded-lg text-sm mt-2">
+                            发送到物流APP
+                        </button>
+                    </div>
                 </div>
-                <div class="text-accent font-medium">¥18.00</div>
             </div>
-            <div class="flex items-center p-3 border border-blue-50 rounded-lg hover:border-primary transition-colors">
-                <input type="radio" name="logistics" id="yd" class="mr-3 text-primary">
-                <img src="https://via.placeholder.com/40" alt="韵达" class="w-10 h-10 mr-3">
-                <div class="flex-1">
-                    <label for="yd" class="font-medium text-gray-800">韵达快递</label>
-                    <div class="text-sm text-gray-500">预计3-4天送达</div>
+            
+            <!-- 自发拼车 -->
+            <div class="border border-gray-100 rounded-lg mb-3 overflow-hidden">
+                <div id="option2" class="cursor-pointer" onclick="selectShippingMethod(2)">
+                    <div class="flex justify-between items-center p-3">
+                        <div class="flex items-center">
+                            <div id="radio2" class="w-5 h-5 rounded-full border-2 border-gray-300 mr-3 flex items-center justify-center">
+                                <div id="dot2" class="w-3 h-3 bg-primary rounded-full hidden"></div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-sm">自发拼车</div>
+                                <div class="text-xs text-gray-500">与其他商家共享物流空间</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs px-2 py-1 bg-green-50 text-green-600 rounded-full">
+                                ¥80-120
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-accent font-medium">¥20.00</div>
+                <div id="details2" class="p-3 bg-blue-50 hidden">
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">发货时间</label>
+                            <input type="date" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">时效要求</label>
+                            <select class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                                <option>普通 (5-7天)</option>
+                                <option>标准 (3-5天)</option>
+                                <option>加急 (1-2天)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">提供空间 (m³)</label>
+                            <input type="number" value="0.3" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">拼车价格 (元/m³)</label>
+                            <input type="number" value="300" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            预计可节省: <span class="text-green-600 font-medium">¥45.00</span>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- 帮我拼车 -->
+            <div class="border border-gray-100 rounded-lg mb-3 overflow-hidden">
+                <div id="option3" class="cursor-pointer" onclick="selectShippingMethod(3)">
+                    <div class="flex justify-between items-center p-3">
+                        <div class="flex items-center">
+                            <div id="radio3" class="w-5 h-5 rounded-full border-2 border-gray-300 mr-3 flex items-center justify-center">
+                                <div id="dot3" class="w-3 h-3 bg-primary rounded-full hidden"></div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-sm">帮我拼车</div>
+                                <div class="text-xs text-gray-500">系统帮您匹配最佳拼车方案</div>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="text-xs px-2 py-1 bg-orange-50 text-orange-600 rounded-full">
+                                ¥90-130
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="details3" class="p-3 bg-blue-50 hidden">
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">需要空间 (m³)</label>
+                            <input type="number" value="0.5" step="0.1" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">发货时间</label>
+                            <input type="date" class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs text-gray-500 mb-1">时效要求</label>
+                            <select class="w-full p-2 border border-gray-200 rounded-lg text-sm focus:border-blue-400 focus:ring-1 focus:ring-blue-400 outline-none">
+                                <option>普通 (5-7天)</option>
+                                <option>标准 (3-5天)</option>
+                                <option>加急 (1-2天)</option>
+                            </select>
+                        </div>
+                        <div class="text-sm font-medium pt-2 border-t border-blue-100 mt-2">
+                            匹配结果:
+                            <span class="text-primary">找到3个匹配方案</span>
+                        </div>
+                        <div class="text-xs bg-white p-2 rounded-lg">
+                            <div class="flex justify-between mb-1">
+                                <span>最优方案价格:</span>
+                                <span class="font-medium text-primary">¥98.50</span>
+                            </div>
+                            <div>6月3日发车，预计6月7日送达，已有3家商户拼车</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 支付与物流信息 -->
+        <div id="paymentSection" class="bg-white p-4 rounded-lg shadow-sm mb-3 border border-blue-100 hidden">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">支付信息</h2>
+            <div class="space-y-4">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm">物流费用:</span>
+                    <span id="shippingFee" class="text-lg font-medium">¥0.00</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm">保价费用:</span>
+                    <span class="text-sm">¥12.80</span>
+                </div>
+                <div class="flex justify-between items-center">
+                    <span class="text-sm">包装费:</span>
+                    <span class="text-sm">¥10.00</span>
+                </div>
+                <div class="flex justify-between items-center pt-2 border-t border-gray-100">
+                    <span class="text-base font-medium">应付总额:</span>
+                    <span id="totalFee" class="text-lg font-medium text-primary">¥0.00</span>
+                </div>
+
+                <div class="mt-4">
+                    <h3 class="text-sm font-medium mb-2">选择支付方式</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center p-2 border border-gray-100 rounded-lg">
+                            <input type="radio" name="payment" id="wechat" checked>
+                            <label for="wechat" class="ml-2 text-sm">微信支付</label>
+                        </div>
+                        <div class="flex items-center p-2 border border-gray-100 rounded-lg">
+                            <input type="radio" name="payment" id="alipay">
+                            <label for="alipay" class="ml-2 text-sm">支付宝</label>
+                        </div>
+                        <div class="flex items-center p-2 border border-gray-100 rounded-lg">
+                            <input type="radio" name="payment" id="balance">
+                            <label for="balance" class="ml-2 text-sm">账户余额</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 物流单信息 -->
+        <div id="trackingSection" class="bg-white p-4 rounded-lg shadow-sm mb-4 border border-blue-100 hidden">
+            <h2 class="text-base font-medium text-primary mb-4 border-b border-blue-50 pb-2">物流单信息</h2>
+            <div class="bg-blue-50 p-3 rounded-lg">
+                <div class="flex justify-between items-center">
+                    <span class="text-sm">物流单号:</span>
+                    <span id="trackingNumber" class="font-mono font-medium">KD2024060366982</span>
+                </div>
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-sm">承运公司:</span>
+                    <span id="shippingCompany">建材物流专线</span>
+                </div>
+                <div class="flex justify-between items-center mt-2">
+                    <span class="text-sm">预计送达:</span>
+                    <span id="estimatedDelivery">2024-06-07</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 按钮区域 -->
+        <div class="pb-4">
+            <button id="calculateBtn" onclick="calculateShipping()" class="w-full bg-primary text-white py-3 rounded-lg text-base font-medium">
+                计算运费
+            </button>
+            <button id="payBtn" onclick="processPayment()" class="w-full bg-primary text-white py-3 rounded-lg text-base font-medium hidden">
+                确认支付
+            </button>
+            <button id="confirmBtn" onclick="window.location.href='order_manage.html'" class="w-full bg-primary text-white py-3 rounded-lg text-base font-medium hidden">
+                确认完成，返回订单
+            </button>
         </div>
     </div>
 
-    <!-- 底部按钮 -->
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-blue-100 p-4">
-        <div class="flex justify-between items-center mb-2">
-            <span class="text-gray-600">运费：</span>
-            <span class="text-xl font-semibold text-accent">¥32.00</span>
-        </div>
-        <button class="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-lg font-semibold transition-colors">
-            确认发货
-        </button>
-    </div>
+    <script>
+        let currentMethod = 0;
+        
+        function selectShippingMethod(method) {
+            // 重置所有选项
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById(`radio${i}`).classList.remove('border-primary');
+                document.getElementById(`radio${i}`).classList.add('border-gray-300');
+                document.getElementById(`dot${i}`).classList.add('hidden');
+                document.getElementById(`details${i}`).classList.add('hidden');
+            }
+            
+            // 选中当前选项
+            document.getElementById(`radio${method}`).classList.add('border-primary');
+            document.getElementById(`radio${method}`).classList.remove('border-gray-300');
+            document.getElementById(`dot${method}`).classList.remove('hidden');
+            document.getElementById(`details${method}`).classList.remove('hidden');
+            
+            currentMethod = method;
+            
+            // 隐藏计算后的部分
+            document.getElementById('paymentSection').classList.add('hidden');
+            document.getElementById('trackingSection').classList.add('hidden');
+            document.getElementById('calculateBtn').classList.remove('hidden');
+            document.getElementById('payBtn').classList.add('hidden');
+            document.getElementById('confirmBtn').classList.add('hidden');
+        }
+        
+        function calculateShipping() {
+            let fee = 0;
+            
+            switch(currentMethod) {
+                case 1:
+                    fee = 150;
+                    break;
+                case 2:
+                    fee = 90;
+                    break;
+                case 3:
+                    fee = 98.5;
+                    break;
+                default:
+                    return;
+            }
+            
+            document.getElementById('shippingFee').textContent = `¥${fee.toFixed(2)}`;
+            document.getElementById('totalFee').textContent = `¥${(fee + 12.8 + 10).toFixed(2)}`;
+            
+            document.getElementById('paymentSection').classList.remove('hidden');
+            document.getElementById('calculateBtn').classList.add('hidden');
+            document.getElementById('payBtn').classList.remove('hidden');
+        }
+        
+        function processPayment() {
+            document.getElementById('trackingSection').classList.remove('hidden');
+            document.getElementById('payBtn').classList.add('hidden');
+            document.getElementById('confirmBtn').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html> 
